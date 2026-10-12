@@ -2049,7 +2049,13 @@
   },
   "workTab": {
     "live": "实时",
-    "focus": "专注"
+    "focus": "专注",
+    "zoomOut": "缩小（Cmd -）",
+    "zoomOutAria": "缩小",
+    "resetZoom": "重置缩放（Cmd 0）",
+    "resetZoomAria": "重置缩放",
+    "zoomIn": "放大（Cmd +）",
+    "zoomInAria": "放大"
   },
   "quit": {
     "killing": "正在退出…",

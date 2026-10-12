@@ -2049,7 +2049,13 @@
   },
   "workTab": {
     "live": "مباشر",
-    "focus": "تركيز"
+    "focus": "تركيز",
+    "zoomOut": "تصغير (Cmd -)",
+    "zoomOutAria": "تصغير",
+    "resetZoom": "إعادة تعيين التكبير (Cmd 0)",
+    "resetZoomAria": "إعادة تعيين التكبير",
+    "zoomIn": "تكبير (Cmd +)",
+    "zoomInAria": "تكبير"
   },
   "quit": {
     "killing": "جارٍ الخروج…",

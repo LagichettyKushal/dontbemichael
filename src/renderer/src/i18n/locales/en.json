@@ -2049,7 +2049,13 @@
   },
   "workTab": {
     "live": "Live",
-    "focus": "Focus"
+    "focus": "Focus",
+    "zoomOut": "Zoom out (Cmd -)",
+    "zoomOutAria": "Zoom out",
+    "resetZoom": "Reset zoom (Cmd 0)",
+    "resetZoomAria": "Reset zoom",
+    "zoomIn": "Zoom in (Cmd +)",
+    "zoomInAria": "Zoom in"
   },
   "quit": {
     "killing": "Quitting…",
