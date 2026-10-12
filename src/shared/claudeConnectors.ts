@@ -128,6 +128,11 @@ export function isEmailCalendarKey(key: string): boolean {
   return /^(gmail|google calendar)$/i.test(key.trim());
 }
 
+/** The Gmail connector specifically, rather than Google Calendar. */
+export function isGmailKey(key: string): boolean {
+  return /^gmail$/i.test(key.trim());
+}
+
 /** Whether the owner has a connector on. QuickBooks keeps its own switch. */
 export function connectorOn(cfg: ConnectorConfig, key: string): boolean {
   return isQuickBooksKey(key) ? cfg.quickbooksClaude === true : cfg.connectorsOn?.[key] === true;

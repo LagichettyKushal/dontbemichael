@@ -1131,6 +1131,7 @@
     "closedGroup": "{{name}} (closed)",
     "closedNote": "{{name}} is closed, so these are paused.",
     "relayHint": "{{godName}} hands this job to the team.",
+    "emailAccessWarning": "{{name}} cannot check email. Add a mailbox or Gmail connector in Access before this job can run.",
     "approvedBy": "approved by {{name}}",
     "everyInterval": "every {{interval}}",
     "focus": "Focus area",

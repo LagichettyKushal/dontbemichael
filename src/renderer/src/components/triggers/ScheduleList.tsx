@@ -13,8 +13,10 @@ import { formatWeekly } from '@shared/weeklySchedule';
 import { formatTimes, normalizeTimes } from '@shared/scheduleTimes';
 import { WhenLines, fieldsFromLines, linesFromMission, sameLines, type LineDraft } from './WhenLines';
 import { cleanFocus, FOCUS_MAX, GOD_ALIAS, missionsFor, nextRunAt, ownerOf, OWNER, type ScheduledMission } from '@shared/missions';
+import { needsEmailAccessWarning } from '@shared/scheduleEmail';
 import { effectiveWorkStyle } from '@shared/michaelWorkStyle';
 import { useRtl } from '@/i18n/useDirection';
+import { useHarnessConfig } from '@/hooks/useHarnessConfig';
 
 /**
  * SCHEDULES, per agent (docs/designs/per-agent-schedules.md).
@@ -222,9 +224,10 @@ interface RowProps {
   ownerName: string;
   /** For the focus area check on save; absent on read only rows. */
   focusOwner?: FocusOwner;
+  emailAccessWarning?: boolean;
 }
 
-function ScheduleRow({ mission, nameOf, readOnly, ownerName, focusOwner }: RowProps) {
+function ScheduleRow({ mission, nameOf, readOnly, ownerName, focusOwner, emailAccessWarning = false }: RowProps) {
   const { t, i18n } = useTranslation();
   const rtl = useRtl();
   const godName = useResolvedGodName();
@@ -371,6 +374,7 @@ function ScheduleRow({ mission, nameOf, readOnly, ownerName, focusOwner }: RowPr
         )}
       </div>
       {mission.relay && <Hint>{t('schedulesSection.relayHint', { godName })}</Hint>}
+      {emailAccessWarning && <Hint>{t('schedulesSection.emailAccessWarning', { name: ownerName })}</Hint>}
       {failed && !open && <Line tone="error">{t('schedulesSection.saveFailed')}</Line>}
 
       {open && !readOnly && (
@@ -534,6 +538,7 @@ export function AgentSchedules({ agentId, agentName }: { agentId: string; agentN
   const godId = useGodId();
   const nameOf = useNameOf();
   const agents = useStore((s) => s.agents);
+  const config = useHarnessConfig();
   const mine = useMemo(() => missionsFor(missions, agentId, godId), [missions, agentId, godId]);
   const isGod = agentId === godId;
   // Michael's schedules keep the 'god' alias the router understands.
@@ -569,6 +574,7 @@ export function AgentSchedules({ agentId, agentName }: { agentId: string; agentN
             nameOf={nameOf}
             ownerName={agentName}
             focusOwner={focusOwner}
+            emailAccessWarning={needsEmailAccessWarning(m, config, agentId)}
           />
         ))}
       </div>
@@ -584,6 +590,7 @@ export function OfficeSchedules() {
   const godId = useGodId();
   const nameOf = useNameOf();
   const agents = useStore((s) => s.agents);
+  const config = useHarnessConfig();
   const [closed, setClosed] = useState<Record<string, boolean>>({});
   useEffect(() => {
     window.cth.hiveRegistry()
@@ -626,6 +633,7 @@ export function OfficeSchedules() {
                   nameOf={nameOf}
                   ownerName={name}
                   readOnly
+                  emailAccessWarning={needsEmailAccessWarning(m, config, owner)}
                 />
               ))}
             </div>

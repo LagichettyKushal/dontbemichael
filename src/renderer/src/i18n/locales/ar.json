@@ -1131,6 +1131,7 @@
     "closedGroup": "{{name}} (مغلق)",
     "closedNote": "{{name}} مغلق، لذا هذه المواعيد متوقفة مؤقتًا.",
     "relayHint": "يوزع {{godName}} هذا العمل على الفريق.",
+    "emailAccessWarning": "لا يستطيع {{name}} التحقق من البريد الإلكتروني. أضف صندوق بريد أو موصل Gmail في الوصول قبل تشغيل هذه المهمة.",
     "approvedBy": "وافق عليه {{name}}",
     "everyInterval": "كل {{interval}}",
     "focus": "محور التركيز",

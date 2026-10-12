@@ -1131,6 +1131,7 @@
     "closedGroup": "{{name}}（已关闭）",
     "closedNote": "{{name}} 已关闭，所以这些已暂停。",
     "relayHint": "{{godName}} 会把这项工作分给团队。",
+    "emailAccessWarning": "{{name}} 无法查看电子邮件。请先在“访问”中添加邮箱或 Gmail 连接器，再运行此任务。",
     "approvedBy": "由 {{name}} 批准",
     "everyInterval": "每 {{interval}}",
     "focus": "重点",
